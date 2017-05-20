@@ -22,5 +22,8 @@ app.prepare().then(() => {
       throw err;
     }
     console.log('> Running on http://localhost:3000');
-  })
-})
+  });
+
+  process.on('uncaughtException', (reason) => process.stderr.write(`SHOULD BE FIXED\n---------------\n${reason}`));
+  process.on('unhandledRejection', (reason) => process.stderr.write(`SHOULD BE FIXED\n---------------\n${reason}`));
+});
