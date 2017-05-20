@@ -11,7 +11,7 @@ export const mapStateToProps = (store, calculateState, executeInitialAction) => 
   return Object.assign(Kontainer, {
     async getInitialProps() {
       await executeInitialAction();
-		  return calculateState();
+      return calculateState();
     }
   });
 };
