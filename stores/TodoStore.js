@@ -2,29 +2,29 @@ import { ReduceStore } from 'flux/utils';
 import { dispatcher } from '../utils/Dispatcher';
 
 class TodoStore extends ReduceStore {
-	constructor(initialState) {
-		super(dispatcher);
-		this.handler = {
-			fetchTodos,
-			addTodo,
-			toggleChangeTodo
-		};
-		this._state = initialState;
-	}
+  constructor(initialState) {
+    super(dispatcher);
+    this.handler = {
+      fetchTodos,
+      addTodo,
+      toggleChangeTodo
+    };
+    this._state = initialState;
+  }
 
-	/** @override */
-	getInitialState() {
-		return this._state ? undefined : {
-			todos: []
-		};
-	}
+  /** @override */
+  getInitialState() {
+    return this._state ? undefined : {
+      todos: []
+    };
+  }
 
-	/** @override */
-	reduce = (state, action) => {
-		console.log(state);
-		const { type, ...payload } = action;
-		return this.handler[type](state, payload);
-	}
+  /** @override */
+  reduce = (state, action) => {
+    console.log(state);
+    const { type, ...payload } = action;
+    return this.handler[type](state, payload);
+  }
 }
 
 /**
@@ -32,7 +32,7 @@ class TodoStore extends ReduceStore {
  * @param {{todos: object[]}} payload
  */
 const fetchTodos = (state, { todos }) => {
-	return { todos };
+  return { todos };
 };
 
 /**
@@ -40,13 +40,13 @@ const fetchTodos = (state, { todos }) => {
  * @param {*} payload
  */
 const addTodo = (state, { title }) => {
-	const todos = [...state.todos, {
-		id: state.todos.length + 1,
-		title,
-		completed: false,
-	}];
+  const todos = [...state.todos, {
+    id: state.todos.length + 1,
+    title,
+    completed: false,
+  }];
 
-	return { todos };
+  return { todos };
 };
 
 /**
@@ -54,8 +54,8 @@ const addTodo = (state, { title }) => {
  * @param {*} payload
  */
 const toggleChangeTodo = (state, { id, completed }) => {
-	state.todos[id - 1].completed = completed;
-	return state;
+  state.todos[id - 1].completed = completed;
+  return state;
 }
 
 export default TodoStore;
