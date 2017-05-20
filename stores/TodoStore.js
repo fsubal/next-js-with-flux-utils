@@ -14,7 +14,7 @@ class TodoStore extends ReduceStore {
 
   /** @override */
   getInitialState() {
-    return this._state ? undefined : {
+    return {
       todos: []
     };
   }
