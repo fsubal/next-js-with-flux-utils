@@ -27,7 +27,7 @@ class Index extends Component {
       <input type="text" value={this.state.text} onChange={this.handleInput} />
       <button onClick={this.handleClickAddButton}>新規！</button>
       <ul>{
-        this.props.todoState.todos.map(todo => (
+        this.props.todos.map(todo => (
           <li key={todo.id}>
             {todo.title}
             <input type="checkbox" onChange={this.handleChangeTodo(todo.id, !todo.completed)} />

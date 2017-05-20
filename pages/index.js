@@ -4,13 +4,12 @@ import { mapStateToProps } from '../utils/mapStateToProps';
 import TodoStore from '../stores/TodoStore';
 import TodoAction from '../actions/TodoAction';
 
-/** rehydrate */
-let initialState;
+let rehydrated;
 if (typeof window !== 'undefined' && window.__NEXT_DATA__) {
-  initialState = window.__NEXT_DATA__.props;
+  rehydrated = window.__NEXT_DATA__.props;
   window.__NEXT_DATA__ = undefined;
 }
-const todoStore = new TodoStore(initialState && initialState.todoState);
+const todoStore = new TodoStore(rehydrated);
 
 export default (
   mapStateToProps(
@@ -18,14 +17,12 @@ export default (
     todoStore,
 
     /** Calcurate stores to props */
-    () => ({
-      todoState: todoStore.getState()
-    }),
+    () => ({ ...todoStore.getState() }),
 
     /** Get initial props */
     async () => {
       await TodoAction.fetchTodos();
-      return { todoState: todoStore.getState() };
+      return { ...todoStore.getState() };
     }
   )(Index)
 );
