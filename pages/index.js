@@ -15,7 +15,7 @@ const todoStore = new TodoStore(initialState && initialState.todoState);
 export default (
 	connectToStores(
 		/** Stores to subscribe */
-		[ todoStore ],
+		[todoStore],
 
 		/** Calcurate stores to props */
 		() => ({

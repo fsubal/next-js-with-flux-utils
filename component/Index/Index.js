@@ -32,7 +32,7 @@ class Index extends Component {
             {todo.title}
             <input type="checkbox" onChange={this.handleChangeTodo(todo.id, !todo.completed)} />
           </li>
-        ))   
+        ))
       }</ul>
     </div>
   )

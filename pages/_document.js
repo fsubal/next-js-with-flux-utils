@@ -7,7 +7,7 @@ export default class extends Document {
     return { html, head };
   }
 
-  render () {
+  render() {
     return (
       <html>
         <Head>

@@ -2,25 +2,25 @@ import { ReduceStore } from 'flux/utils';
 import { dispatcher } from '../utils/Dispatcher';
 
 class TodoStore extends ReduceStore {
-  constructor(initialState) {
-    super(dispatcher);
+	constructor(initialState) {
+		super(dispatcher);
 		this.handler = {
 			fetchTodos,
 			addTodo,
 			toggleChangeTodo
 		};
 		this._state = initialState;
-  }
+	}
 
 	/** @override */
-  getInitialState() {
+	getInitialState() {
 		return this._state ? undefined : {
 			todos: []
 		};
-  }
+	}
 
 	/** @override */
-  reduce = (state, action) => {
+	reduce = (state, action) => {
 		console.log(state);
 		const { type, ...payload } = action;
 		return this.handler[type](state, payload);
