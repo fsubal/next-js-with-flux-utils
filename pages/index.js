@@ -1,6 +1,6 @@
 import React from 'react';
 import Index from '../component/Index/Index';
-import { connectToStores } from '../utils/connectToStores';
+import { mapStateToProps } from '../utils/mapStateToProps';
 import TodoStore from '../stores/TodoStore';
 import TodoAction from '../actions/TodoAction';
 
@@ -13,9 +13,9 @@ if (typeof window !== 'undefined' && window.__NEXT_DATA__) {
 const todoStore = new TodoStore(initialState && initialState.todoState);
 
 export default (
-  connectToStores(
+  mapStateToProps(
     /** Stores to subscribe */
-    [todoStore],
+    todoStore,
 
     /** Calcurate stores to props */
     () => ({
